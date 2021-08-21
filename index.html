@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      button {
+          width: 140px;
+          height: 20px;
+      }
+    </style>
+
+</head>
+
+<body>
+    <form action="http://" id="form" method="GET" onsubmit="sConsole(event)">
+      <div class="data">
+        <input 
+            data-form
+            type="text" 
+            name="username" 
+            placeholder="Username">
+        <input 
+            data-form
+            type="password" 
+            name="password" 
+            placeholder="Password">
+      </div>
+      <div class="submit">
+        <button type="submit" value="Sign up">Submit</button>
+      </div>
+    </form>
+</body>
+
+<script>
+
+  function sConsole(event) {
+    event.preventDefault();
+    let body = {};
+    for (let input of event.target) {
+        if (input.attributes['data-form']) {
+            const name = input.name;
+            const value = input.value;
+            Object.assign(body, { [name]: value })
+        }
+    }
+    console.log(body);
+    return body;
+  }
+
+</script>
+
+</html>
